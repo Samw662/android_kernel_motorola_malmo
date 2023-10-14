@@ -1,3 +1,12 @@
+ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
+
+dtbo-y += hw_fence/pineapple-hw-fence.dtbo \
+
+dtbo-$(CONFIG_ARCF_DTB) += pineapple-mm-arcf-evt1a-overlay.dtbo
+dtbo-$(CONFIG_CTWOV_DTB) += pineapple-mm-ctwov-evb-overlay.dtbo
+
+else
+
 ifeq ($(CONFIG_ARCH_PINEAPPLE), y)
 	dtbo-y += hw_fence/pineapple-hw-fence.dtbo \
 		pineapple-mm-rumi-overlay.dtbo \
@@ -11,6 +20,8 @@ ifeq ($(CONFIG_ARCH_PINEAPPLE), y)
 		pineapple-mm-cdp-nfc-overlay.dtbo \
 		pineapple-mm-atp-overlay.dtbo
 endif
+
+endif # end of CONFIG_MMI_DEVICE_DTBS
 
 ifeq ($(CONFIG_ARCH_KALAMA), y)
 	dtbo-y += hw_fence/kalama-hw-fence.dtbo \
