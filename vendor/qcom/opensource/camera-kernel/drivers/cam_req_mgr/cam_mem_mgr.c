@@ -1086,7 +1086,7 @@ int cam_mem_mgr_map(struct cam_mem_mgr_map_cmd_v2 *cmd)
 			is_internal);
 		if (rc) {
 			CAM_ERR(CAM_MEM,
-				"Failed in map_hw_va, flags=0x%x, fd=%d, len=%llu, region=%d, num_hdl=%d, rc=%d",
+				"Failed in map_hw_va, flags=0x%x, fd=%d, len=%zu, region=%d, num_hdl=%d, rc=%d",
 				cmd->flags, cmd->fd, len,
 				CAM_SMMU_REGION_IO, cmd->num_hdl, rc);
 			if (rc == -EALREADY) {

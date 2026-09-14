@@ -75,6 +75,7 @@
 #include <linux/sched.h>
 #include <linux/fs_struct.h>
 #include <linux/namei.h>
+#include <linux/blkdev.h>
 #include <asm/current.h>
 #include <asm/unaligned.h>
 
@@ -145,7 +146,7 @@ extern struct timezone sys_tz;
 	} while (0)
 
 /* Linear day numbers of the respective 1sts in non-leap years. */
-static time_t accum_days_in_year[] = {
+static long accum_days_in_year[] = {
 	/* Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec */
 	0,   0,  31,  59,  90, 120, 151, 181, 212, 243, 273, 304, 334, 0, 0, 0,
 };
@@ -164,8 +165,8 @@ static void exfat_sbi_uevent_work(struct work_struct *work)
 void exfat_time_fat2unix(struct exfat_sb_info *sbi, struct timespec_compat *ts,
 						 DATE_TIME_T *tp)
 {
-	time_t year = tp->Year;
-	time_t ld;
+	long year = tp->Year;
+	long ld;
 
 	MAKE_LEAP_YEAR(ld, year);
 
@@ -183,9 +184,9 @@ void exfat_time_fat2unix(struct exfat_sb_info *sbi, struct timespec_compat *ts,
 void exfat_time_unix2fat(struct exfat_sb_info *sbi, struct timespec_compat *ts,
 						 DATE_TIME_T *tp)
 {
-	time_t second = ts->tv_sec;
-	time_t day, month, year;
-	time_t ld;
+	long second = ts->tv_sec;
+	long day, month, year;
+	long ld;
 
 	second -= sys_tz.tz_minuteswest * SECS_PER_MIN;
 
