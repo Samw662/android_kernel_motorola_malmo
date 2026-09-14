@@ -115,3 +115,8 @@ obj-y					+= blink/
 
 # Simple LED drivers
 obj-y					+= simple/
+
+# Motorola indicator PWM driver
+EXTRA_CFLAGS += -Wall
+EXTRA_CFLAGS += -I$(srctree)/include
+obj-m += leds-indicator-pwm.o
