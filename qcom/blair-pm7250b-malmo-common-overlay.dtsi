@@ -1,0 +1,65 @@
+/* Copyright (c) 2023, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+#include <dt-bindings/input/qcom,qpnp-power-on.h>
+#include "blair-pm7250b-moto-common-overlay.dtsi"
+#include "malmo-charger.dtsi"
+
+&pm8008_8 {
+	status = "disabled";
+};
+
+&pm8008_9 {
+	status = "disabled";
+};
+
+&pm7250b_charger {
+	dpdm-supply = <&usb2_phy0>;
+};
+&fsa4480{
+	io-channels = <&pm7250b_charger PSY_IIO_TYPEC_ACCESSORY_MODE>;
+	io-channel-names = "typec_mode";
+	qcom,use-power-supply = <1>;
+};
+&smb1394 {
+	status = "disabled";
+};
+
+&pm6125_0 {
+	/delete-node/ qcom,power-on@800;
+	pm6125_pon: qcom,power-on@800 {
+		compatible = "qcom,qpnp-power-on";
+		reg = <0x800>;
+		interrupts = <0x0 0x8 0x0 IRQ_TYPE_EDGE_BOTH>,
+			     <0x0 0x8 0x1 IRQ_TYPE_EDGE_BOTH>;
+		interrupt-names = "kpdpwr", "resin";
+		qcom,pon-dbc-delay = <15625>;
+		qcom,kpdpwr-sw-debounce;
+		qcom,system-reset;
+		qcom,store-hard-reset-reason;
+
+		qcom,pon_1 {
+			qcom,pon-type = <PON_POWER_ON_TYPE_KPDPWR>;
+			qcom,pull-up;
+			linux,code = <KEY_POWER>;
+		};
+
+		qcom,pon_2 {
+			qcom,pon-type = <PON_POWER_ON_TYPE_RESIN>;
+			qcom,pull-up;
+			linux,code = <KEY_VOLUMEDOWN>;
+		};
+	};
+};
+
+&smb1394_div2_cp_primary {
+	status = "disabled";
+};

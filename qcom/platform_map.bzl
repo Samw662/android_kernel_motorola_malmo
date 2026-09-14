@@ -1,0 +1,429 @@
+load("//msm-kernel:moto_product.bzl", "mmi_product_name")
+
+_platform_map = {
+    "autogvm": {
+        "dtb_list": [
+            # keep sorted
+            {"name": "direwolf-vm-la.dtb"},
+            {"name": "direwolf-vm-lv.dtb"},
+            {"name": "lemans-vm-la.dtb"},
+            {"name": "lemans-vm-la-mt.dtb"},
+            {"name": "lemans-vm-la1-mt.dtb"},
+            {"name": "lemans-vm-lv.dtb"},
+            {"name": "lemans-vm-lv-mt.dtb"},
+            {"name": "sa8155-vm-la.dtb"},
+            {"name": "sa8155-vm-la-mt.dtb"},
+            {"name": "sa8195-vm-la.dtb"},
+            {"name": "monaco-vm-la.dtb"},
+            {"name": "monaco-vm-lv.dtb"},
+            {"name": "sa6155p-vm-la.dtb"},
+        ],
+        "dtbo_list": [
+            # keep sorted
+            {"name": "direwolf-vm-la-overlay.dtbo"},
+            {"name": "direwolf-vm-lv-overlay.dtbo"},
+            {"name": "lemans-vm-la-overlay.dtbo"},
+            {"name": "lemans-vm-la-mt-overlay.dtbo"},
+            {"name": "lemans-vm-la1-mt-overlay.dtbo"},
+            {"name": "lemans-vm-lv-overlay.dtbo"},
+            {"name": "lemans-vm-lv-mt-overlay.dtbo"},
+            {"name": "sa8155-vm-la-overlay.dtbo"},
+            {"name": "sa8155-vm-la-mt-overlay.dtbo"},
+            {"name": "sa8195-vm-la-overlay.dtbo"},
+            {"name": "monaco-vm-la-overlay.dtbo"},
+            {"name": "monaco-vm-lv-overlay.dtbo"},
+            {"name": "sa6155p-vm-la-overlay.dtbo"},
+        ],
+    },
+    "autoghgvm": {
+        "dtb_list": [
+            # keep sorted
+            {"name": "lemans-gunyah-vm-cob.dtb"},
+            {"name": "lemans-gunyah-vm-qam.dtb"},
+            {"name": "lemans-gunyah-vm-vp.dtb"},
+        ],
+        "dtbo_list": [
+            # keep sorted
+            {"name": "lemans-gunyah-vm-cob-overlay.dtbo"},
+            {"name": "lemans-gunyah-vm-qam-overlay.dtbo"},
+            {"name": "lemans-gunyah-vm-vp-overlay.dtbo"},
+        ],
+    },
+    "gen3auto": {
+        "dtb_list": [
+            # keep sorted
+            {"name": "sa8155.dtb"},
+            {"name": "sa8155p.dtb"},
+            {"name": "sa8155-v2.dtb"},
+            {"name": "sa8155p-v2.dtb"},
+            {"name": "sa8195p.dtb"},
+        ],
+        "dtbo_list": [
+            # keep sorted
+            {"name": "sa8155-adp-air-overlay.dtbo"},
+            {"name": "sa8155-adp-star-overlay.dtbo"},
+            {"name": "sa8155p-adp-air-overlay.dtbo"},
+            {"name": "sa8155p-adp-star-overlay.dtbo"},
+            {"name": "sa8195p-adp-air-overlay.dtbo"},
+            {"name": "sa8195p-adp-star-overlay.dtbo"},
+        ],
+    },
+    "gen4auto": {
+        "dtb_list": [
+            # keep sorted
+            {"name": "monaco_auto.dtb"},
+            {"name": "monaco_auto-adas.dtb"},
+            {"name": "monaco_auto-ivi.dtb"},
+        ],
+        "dtbo_list": [
+            # keep sorted
+            {"name": "monaco_auto-adas-adp-air-overlay.dtbo"},
+            {"name": "monaco_auto-adas-adp-star-overlay.dtbo"},
+            {"name": "monaco_auto-ivi-adp-air-overlay.dtbo"},
+            {"name": "monaco_auto-ivi-adp-star-overlay.dtbo"},
+            {"name": "monaco_auto-rumi-overlay.dtbo"},
+        ],
+    },
+    "sdmsteppeauto": {
+        "dtb_list": [
+            #keep sorted
+            {"name": "sa6155.dtb"},
+            {"name": "sa6155p.dtb"},
+        ],
+        "dtbo_list": [
+            #keep sorted
+            {"name": "sa6155-adp-air-overlay.dtbo"},
+            {"name": "sa6155-adp-star-overlay.dtbo"},
+            {"name": "sa6155p-adp-air-overlay.dtbo"},
+            {"name": "sa6155p-adp-star-overlay.dtbo"},
+        ],
+    },
+    "kalama": {
+        "dtb_list": [
+            {"name": "kalama.dtb"},
+            {"name": "kalama-v2.dtb"},
+            {
+                "name": "kalamap.dtb",
+                "apq": True,
+            },
+            {
+                "name": "kalamap-v2.dtb",
+                "apq": True,
+            },
+        ],
+        "dtbo_list": [
+            {"name": "kalama-atp-overlay.dtbo"},
+            {"name": "kalama-cdp-nfc-overlay.dtbo"},
+            {"name": "kalama-cdp-overlay.dtbo"},
+            {"name": "kalama-cdp-wsa883x-overlay.dtbo"},
+            {"name": "kalama-mtp-nfc-overlay.dtbo"},
+            {"name": "kalama-mtp-overlay.dtbo"},
+            {"name": "kalama-qrd-overlay.dtbo"},
+            {"name": "kalama-rcm-overlay.dtbo"},
+            {
+                "name": "kalama-rumi-overlay.dtbo",
+                "apq": False,
+            },
+        ],
+    },
+    "kalama-tuivm": {
+        "dtb_list": [
+            {"name": "kalama-oemvm-cdp.dtb"},
+            {"name": "kalama-oemvm-mtp.dtb"},
+            {"name": "kalama-oemvm-qrd.dtb"},
+            {"name": "kalama-oemvm-rumi.dtb"},
+            {"name": "kalama-vm-cdp.dtb"},
+            {"name": "kalama-vm-mtp.dtb"},
+            {"name": "kalama-vm-qrd.dtb"},
+            {"name": "kalama-vm-rumi.dtb"},
+        ],
+    },
+    "kalama-oemvm": {
+        "dtb_list": [
+            {"name": "kalama-oemvm-cdp.dtb"},
+            {"name": "kalama-oemvm-mtp.dtb"},
+            {"name": "kalama-oemvm-qrd.dtb"},
+            {"name": "kalama-oemvm-rumi.dtb"},
+            {"name": "kalama-vm-cdp.dtb"},
+            {"name": "kalama-vm-mtp.dtb"},
+            {"name": "kalama-vm-qrd.dtb"},
+            {"name": "kalama-vm-rumi.dtb"},
+        ],
+    },
+    "pineapple": {
+        "dtb_list": [
+            { "name": "pineapple-arcf-base.dtb", "product": "arcf", },
+            { "name": "pineapple-v2-arcf-base.dtb", "product": "arcf", },
+            { "name": "pineapple-ctwov-base.dtb", "product": "ctwov", },
+            { "name": "pineapple-v2-ctwov-base.dtb", "product": "ctwov", },
+        ],
+        "dtbo_list": [
+            {"name": "pineapple-dpm-overlay.dtbo"},
+            {"name": "pineapple-arcf-evt1a-overlay.dtbo", "product": "arcf", },
+            {"name": "pineapple-arcf-evt2-overlay.dtbo", "product": "arcf", },
+            {"name": "pineapple-ctwov-evb-overlay.dtbo", "product": "ctwov", },
+        ],
+        "binary_compatible_with": ["cliffs"],
+    },
+    "niobe": {
+        "dtb_list": [
+            {"name": "niobe.dtb"},
+            {
+                "name": "niobep.dtb",
+                "apq": True,
+            },
+        ],
+        "dtbo_list": [
+            {"name": "niobe-atp-overlay.dtbo"},
+            {"name": "niobe-idp-overlay.dtbo"},
+            {"name": "niobe-qxr-overlay.dtbo"},
+            {"name": "niobep-atp-overlay.dtbo"},
+            {"name": "niobep-idp-overlay.dtbo"},
+            {"name": "niobep-qxr-overlay.dtbo"},
+            {
+                "name": "niobe-rumi-overlay.dtbo",
+                "apq": False,
+            },
+        ],
+    },
+    "cliffs": {
+        "dtb_list": [
+            { "name": "cliffs-ctwo-base.dtb", "product": "ctwo", },
+            { "name": "cliffs-arcfox-base.dtb", "product": "arcfox", },
+        ],
+        "dtbo_list": [
+            {"name": "cliffs-mtp-peach-2s-nfc-wcd9395-overlay.dtbo"},
+            {"name": "cliffs-mtp-peach-2s-nfc-wcd9395-pm8550b-overlay.dtbo"},
+            {"name": "cliffs-mtp-kiwi-overlay.dtbo"},
+            {"name": "cliffs-mtp-peach-overlay.dtbo"},
+            {"name": "cliffs-ctwo-evb3-overlay.dtbo", "product": "ctwo", },
+            {"name": "cliffs-arcfox-evt3-overlay.dtbo", "product": "arcfox", },
+        ],
+    },
+    "pineapple-tuivm": {
+        "dtb_list": [
+            {"name": "pineapple-oemvm-rcm.dtb"},
+            {"name": "pineapple-oemvm-cdp.dtb"},
+            {"name": "pineapple-oemvm-mtp.dtb"},
+            {"name": "pineapple-oemvm-qrd.dtb"},
+            {"name": "pineapple-oemvm-rumi.dtb"},
+            {"name": "pineapplep-oemvm-hdk.dtb"},
+            {"name": "pineapple-vm-rcm.dtb"},
+            {"name": "pineapple-vm-cdp.dtb"},
+            {"name": "pineapple-vm-mtp.dtb"},
+            {"name": "pineapple-vm-qrd.dtb"},
+            {"name": "pineapple-vm-rumi.dtb"},
+            {"name": "pineapplep-vm-hdk.dtb"},
+        ],
+        "binary_compatible_with": ["cliffs-tuivm", "volcano-tuivm"],
+    },
+    "pineapple-oemvm": {
+        "dtb_list": [
+            {"name": "pineapple-oemvm-rcm.dtb"},
+            {"name": "pineapple-oemvm-cdp.dtb"},
+            {"name": "pineapple-oemvm-mtp.dtb"},
+            {"name": "pineapple-oemvm-qrd.dtb"},
+            {"name": "pineapple-oemvm-rumi.dtb"},
+            {"name": "pineapplep-oemvm-hdk.dtb"},
+            {"name": "pineapple-vm-rcm.dtb"},
+            {"name": "pineapple-vm-cdp.dtb"},
+            {"name": "pineapple-vm-mtp.dtb"},
+            {"name": "pineapple-vm-qrd.dtb"},
+            {"name": "pineapple-vm-rumi.dtb"},
+            {"name": "pineapplep-vm-hdk.dtb"},
+        ],
+        "binary_compatible_with": ["cliffs-oemvm", "volcano-oemvm"],
+    },
+    "cliffs-tuivm": {
+        "dtb_list": [
+            {"name": "cliffs-vm-rumi.dtb"},
+            {"name": "cliffs-vm-atp.dtb"},
+            {"name": "cliffs-vm-cdp.dtb"},
+            {"name": "cliffs-vm-mtp.dtb"},
+            {"name": "cliffs-vm-mtp-kiwi.dtb"},
+            {"name": "cliffs-vm-mtp-peach.dtb"},
+            {"name": "cliffs-vm-qrd.dtb"},
+            {"name": "cliffs-vm-rcm.dtb"},
+            {"name": "cliffs-vm-rcm-fhdp-kiwi.dtb"},
+            {"name": "cliffs-vm-rcm-qhdp.dtb"},
+            {"name": "cliffs-vm-rcm-qhdp-kiwi.dtb"},
+            {"name": "cliffs-vm-mtp-kiwi-2s-nfc-wcd9395.dtb"},
+            {"name": "cliffs-vm-mtp-peach-2s-nfc-wcd9395.dtb"},
+            {"name": "cliffs-oemvm-rumi.dtb"},
+            {"name": "cliffs-oemvm-atp.dtb"},
+            {"name": "cliffs-oemvm-cdp.dtb"},
+            {"name": "cliffs-oemvm-mtp.dtb"},
+            {"name": "cliffs-oemvm-mtp-kiwi.dtb"},
+            {"name": "cliffs-oemvm-mtp-peach.dtb"},
+            {"name": "cliffs-oemvm-qrd.dtb"},
+            {"name": "cliffs-oemvm-rcm.dtb"},
+            {"name": "cliffs-oemvm-rcm-fhdp-kiwi.dtb"},
+            {"name": "cliffs-oemvm-rcm-qhdp.dtb"},
+            {"name": "cliffs-oemvm-rcm-qhdp-kiwi.dtb"},
+            {"name": "cliffs-oemvm-mtp-kiwi-2s-nfc-wcd9395.dtb"},
+            {"name": "cliffs-oemvm-mtp-peach-2s-nfc-wcd9395.dtb"},
+        ],
+    },
+    "cliffs-oemvm": {
+        "dtb_list": [
+            {"name": "cliffs-vm-rumi.dtb"},
+            {"name": "cliffs-vm-atp.dtb"},
+            {"name": "cliffs-vm-cdp.dtb"},
+            {"name": "cliffs-vm-mtp.dtb"},
+            {"name": "cliffs-vm-mtp-kiwi.dtb"},
+            {"name": "cliffs-vm-mtp-peach.dtb"},
+            {"name": "cliffs-vm-qrd.dtb"},
+            {"name": "cliffs-vm-rcm.dtb"},
+            {"name": "cliffs-vm-rcm-fhdp-kiwi.dtb"},
+            {"name": "cliffs-vm-rcm-qhdp.dtb"},
+            {"name": "cliffs-vm-rcm-qhdp-kiwi.dtb"},
+            {"name": "cliffs-vm-mtp-kiwi-2s-nfc-wcd9395.dtb"},
+            {"name": "cliffs-vm-mtp-peach-2s-nfc-wcd9395.dtb"},
+            {"name": "cliffs-oemvm-rumi.dtb"},
+            {"name": "cliffs-oemvm-atp.dtb"},
+            {"name": "cliffs-oemvm-cdp.dtb"},
+            {"name": "cliffs-oemvm-mtp.dtb"},
+            {"name": "cliffs-oemvm-mtp-kiwi.dtb"},
+            {"name": "cliffs-oemvm-mtp-peach.dtb"},
+            {"name": "cliffs-oemvm-qrd.dtb"},
+            {"name": "cliffs-oemvm-rcm.dtb"},
+            {"name": "cliffs-oemvm-rcm-fhdp-kiwi.dtb"},
+            {"name": "cliffs-oemvm-rcm-qhdp.dtb"},
+            {"name": "cliffs-oemvm-rcm-qhdp-kiwi.dtb"},
+            {"name": "cliffs-oemvm-mtp-kiwi-2s-nfc-wcd9395.dtb"},
+            {"name": "cliffs-oemvm-mtp-peach-2s-nfc-wcd9395.dtb"},
+        ],
+    },
+    "volcano-tuivm": {
+        "dtb_list": [
+            {"name": "volcano-vm-rumi.dtb"},
+            {"name": "volcano-vm-atp.dtb"},
+            {"name": "volcano-vm-idp.dtb"},
+            {"name": "volcano-vm-idp-wcd9395.dtb"},
+            {"name": "volcano-vm-mtp.dtb"},
+            {"name": "volcano-vm-mtp-wcd9395-aatc.dtb"},
+            {"name": "volcano-vm-qrd.dtb"},
+            {"name": "volcano-oemvm-rumi.dtb"},
+            {"name": "volcano-oemvm-atp.dtb"},
+            {"name": "volcano-oemvm-idp.dtb"},
+            {"name": "volcano-oemvm-idp-wcd9395.dtb"},
+            {"name": "volcano-oemvm-mtp.dtb"},
+            {"name": "volcano-oemvm-mtp-wcd9395-aatc.dtb"},
+            {"name": "volcano-oemvm-qrd.dtb"},
+        ],
+    },
+    "volcano-oemvm": {
+        "dtb_list": [
+            {"name": "volcano-oemvm-rumi.dtb"},
+            {"name": "volcano-oemvm-atp.dtb"},
+            {"name": "volcano-oemvm-idp.dtb"},
+            {"name": "volcano-oemvm-idp-wcd9395.dtb"},
+            {"name": "volcano-oemvm-mtp.dtb"},
+            {"name": "volcano-oemvm-mtp-wcd9395-aatc.dtb"},
+            {"name": "volcano-oemvm-qrd.dtb"},
+            {"name": "volcano-vm-rumi.dtb"},
+            {"name": "volcano-vm-atp.dtb"},
+            {"name": "volcano-vm-idp.dtb"},
+            {"name": "volcano-vm-idp-wcd9395.dtb"},
+            {"name": "volcano-vm-mtp.dtb"},
+            {"name": "volcano-vm-mtp-wcd9395-aatc.dtb"},
+            {"name": "volcano-vm-qrd.dtb"},
+        ],
+    },
+    "blair": {
+        "dtb_list": [
+            { "name": "blair-malmo-base.dtb", "product": "malmo", },
+        ],
+        "dtbo_list": [
+            {"name": "blair-malmo-evb-overlay.dtbo", "product": "malmo", },
+        ],
+    },
+    "pitti": {
+        "dtb_list": [
+            {"name": "pitti.dtb"},
+            {"name": "pitti-3gb.dtb"},
+            {"name": "pitti-4gb.dtb"},
+        ],
+        "dtbo_list": [
+            {"name": "pitti-atp-overlay.dtbo"},
+            {"name": "pitti-idp-overlay.dtbo"},
+            {"name": "pitti-qrd-overlay.dtbo"},
+            {"name": "pitti-idp-apache-overlay.dtbo"},
+            {"name": "pitti-idp-pmiv0104-apache-overlay.dtbo"},
+            {"name": "pitti-idp-amoled-overlay.dtbo"},
+            {"name": "pitti-idp-pmiv0104-overlay.dtbo"},
+            {"name": "pitti-idp-3gb-overlay.dtbo"},
+            {"name": "pitti-idp-pmiv0104-3gb-overlay.dtbo"},
+            {"name": "pitti-qrd-3gb-overlay.dtbo"},
+            {"name": "pitti-atp-4gb-overlay.dtbo"},
+            {"name": "pitti-idp-pmiv0104-4gb-overlay.dtbo"},
+            {"name": "pitti-idp-4gb-overlay.dtbo"},
+            {"name": "pitti-qrd-4gb-overlay.dtbo"},
+            {
+                "name": "pitti-rumi-overlay.dtbo",
+                "apq": False,
+            },
+        ],
+    },
+    "volcano": {
+        "dtb_list": [
+            {"name": "volcano.dtb"},
+            {"name": "volcano6.dtb"},
+            {
+                "name": "volcano6p.dtb",
+                "apq": True,
+            },
+        ],
+        "dtbo_list": [
+            {
+                "name": "volcano-rumi-overlay.dtbo",
+                "apq": False,
+            },
+            {"name": "volcano-atp-overlay.dtbo"},
+            {"name": "volcano-idp-overlay.dtbo"},
+            {"name": "volcano-idp-wcd9395-overlay.dtbo"},
+            {"name": "volcano-mtp-overlay.dtbo"},
+            {"name": "volcano-mtp-wcd9395-aatc-overlay.dtbo"},
+            {"name": "volcano-qrd-overlay.dtbo"},
+        ],
+    },
+}
+
+def _get_dtb_lists(target, dt_overlay_supported):
+    if not target in _platform_map:
+        fail("{} not in device tree platform map!".format(target))
+
+    ret = {
+        "dtb_list": [],
+        "dtbo_list": [],
+    }
+    product = mmi_product_name
+    for dtb_node in [target] + _platform_map[target].get("binary_compatible_with", []):
+        for dtb in _platform_map[dtb_node].get("dtb_list", []):
+            if (dtb.get("product","default") == product) or (dtb.get("product","default") == "default") :
+                # print("target:{} product:{} append dtb_list name {}".format(target, product, dtb.get("name")))
+                ret["dtb_list"].append({"name": "{}".format(dtb.get("name"))})
+
+        if dt_overlay_supported:
+            for dtbo in _platform_map[dtb_node].get("dtbo_list", []):
+                if (dtbo.get("product","default") == product) or (dtbo.get("product","default") == "default") :
+                    # print("target:{} product:{} append dtbo_list name {}".format(target, product, dtbo.get("name")))
+                    ret["dtbo_list"].append({"name": "{}".format(dtbo.get("name"))})
+        else:
+            # Translate the dtbo list into dtbs we can append to main dtb_list
+            for dtb in _platform_map[dtb_node].get("dtb_list", []):
+                dtb_base = dtb["name"].replace(".dtb", "")
+                for dtbo in _platform_map[dtb_node].get("dtbo_list", []):
+                    if not dtbo.get("apq", True) and dtb.get("apq", False):
+                        continue
+
+                    dtbo_base = dtbo["name"].replace(".dtbo", "")
+                    ret["dtb_list"].append({"name": "{}-{}.dtb".format(dtb_base, dtbo_base)})
+
+    return ret
+
+def get_dtb_list(target, dt_overlay_supported = True):
+    return [dtb["name"] for dtb in _get_dtb_lists(target, dt_overlay_supported).get("dtb_list", [])]
+
+def get_dtbo_list(target, dt_overlay_supported = True):
+    return [dtb["name"] for dtb in _get_dtb_lists(target, dt_overlay_supported).get("dtbo_list", [])]

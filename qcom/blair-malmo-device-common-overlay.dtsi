@@ -1,0 +1,47 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/* This file is only for malmo device */
+
+#include "blair-malmo-products-common-overlay.dtsi"
+#include "blair-pm7250b-malmo-common-overlay.dtsi"
+#include "blair-malmo-vibrator-overlay.dtsi"
+#include "blair-malmo-fps-overlay.dtsi"
+#include "blair-malmo-sensor.dtsi"
+#include "blair-malmo-thermal-overlay.dtsi"
+
+&sdhc_2 {
+        status = "ok";
+
+        cd-gpios = <&tlmm 94 GPIO_ACTIVE_HIGH>;
+};
+
+/* Primary USB port related controller */
+&usb0 {
+	dwc3@4e00000 {
+		snps,usb2-lpm-disable;
+                usb-phy = <&usb2_phy0>, <&usb_nop_phy>;
+                maximum-speed = "high-speed";
+	};
+};
+
+/* Primary USB port related QUSB2 PHY */
+&usb2_phy0 {
+	qcom,param-override-seq =
+	<0xa6 0x6c      /* override_x0 */
+	 0x8a 0x70	/* override_x1 */
+	 0x16 0x74>;	/* override_x2 */
+	qcom,host-param-override-seq =
+	<0xa7 0x6c	/* override_x0 */
+	 0x8a 0x70	/* override_x1 */
+	 0x16 0x74>;	/* override_x2 */
+};
