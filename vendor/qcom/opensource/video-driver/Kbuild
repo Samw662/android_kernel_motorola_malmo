@@ -5,7 +5,8 @@ VIDEO_ROOT ?= $(srctree)/vendor/qcom/opensource/video-driver
 ccflags-y += -Wno-error=format
 
 ifneq ($(CONFIG_ARCH_MONACO), y)
-KBUILD_CPPFLAGS += -DCONFIG_MSM_MMRM=1
+# MMRM driver not present in-tree; let header provide inline stubs
+# KBUILD_CPPFLAGS += -DCONFIG_MSM_MMRM=1
 endif
 
 ifeq ($(CONFIG_ARCH_WAIPIO), y)
