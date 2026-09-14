@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config MMI_SYS_TEMP
+	tristate "Motorola system temperature driver"
+	help
+	  Motorola system temperature driver for thermal
+	  zone monitoring via sysfs.

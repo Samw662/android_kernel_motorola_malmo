@@ -8,7 +8,7 @@ include $(CLEAR_VARS)
 ifneq ($(findstring vendor,$(LOCAL_PATH)),)
 
 ifneq ($(findstring opensource,$(LOCAL_PATH)),)
-	DISPLAY_BLD_DIR := $(TOP)/vendor/qcom/opensource/display-drivers
+	DISPLAY_BLD_DIR := $(TOP)/kernel_platform/msm-kernel
 endif # opensource
 
 DLKM_DIR := $(TOP)/device/qcom/common/dlkm

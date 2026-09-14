@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config SX937X_SAR
+	tristate "Semtech SX937x SAR sensor driver"
+	help
+	  Semtech SX937x SAR (Specific Absorption Rate) proximity
+	  sensor driver for Motorola devices.

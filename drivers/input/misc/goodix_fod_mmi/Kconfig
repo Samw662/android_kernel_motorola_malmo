@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config GOODIX_FOD_MMI
+	tristate "Goodix fingerprint on display driver (MMI)"
+	help
+	  Goodix fingerprint on display (FOD) driver for
+	  Motorola devices.

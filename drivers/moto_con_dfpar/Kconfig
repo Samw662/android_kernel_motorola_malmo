@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config MOTO_CON_DFPAR
+	tristate "Motorola console dfpar driver"
+	help
+	  Motorola console driver for diagnostic framebuffer
+	  parallel output.

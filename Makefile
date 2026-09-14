@@ -770,6 +770,38 @@ ifeq ($(KBUILD_EXTMOD),)
 core-y		:=
 drivers-y	:=
 libs-y		:= lib/
+
+# --- Vendor driver integration (Motorola/Qualcomm in-tree DLKM) ---
+core-y		+= vendor/qcom/opensource/audio-kernel/
+core-y		+= vendor/qcom/opensource/camera-kernel/
+core-y		+= vendor/qcom/opensource/video-driver/
+core-y		+= vendor/qcom/opensource/securemsm-kernel/
+core-y		+= vendor/nxp/opensource/driver/
+
+# --- Vendor build variables ---
+# DISPLAY_ROOT must point to kernel root so that:
+#   $(DISPLAY_ROOT)/config/gki_blairdisp.conf -> config/gki_blairdisp.conf
+#   $(DISPLAY_ROOT)/msm -> msm/
+#   $(DISPLAY_ROOT)/rotator -> rotator/
+#   $(DISPLAY_ROOT)/include -> include/
+DISPLAY_ROOT	:= $(srctree)
+export DISPLAY_ROOT
+
+CAMERA_KERNEL_ROOT := $(srctree)/vendor/qcom/opensource/camera-kernel
+export CAMERA_KERNEL_ROOT
+
+SSG_MODULE_ROOT := $(srctree)/vendor/qcom/opensource/securemsm-kernel
+export SSG_MODULE_ROOT
+
+TOP		:= $(srctree)
+export TOP
+
+KERNEL_ROOT	:= $(srctree)
+export KERNEL_ROOT
+
+KERNEL_SRC	:= $(srctree)
+export KERNEL_SRC
+
 endif # KBUILD_EXTMOD
 
 ifndef KBUILD_MIXED_TREE

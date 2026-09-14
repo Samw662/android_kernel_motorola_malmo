@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config MMI_INFO
+	tristate "Motorola MMI device info driver"
+	help
+	  Motorola MMI device info driver exposing hardware
+	  revision and product information via sysfs.

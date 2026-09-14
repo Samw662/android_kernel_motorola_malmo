@@ -109,7 +109,6 @@ msm_drm-$(CONFIG_HDCP_QSEECOM) := ../hdcp/msm_hdcp.o \
 				  sde_hdcp_2x.o
 
 msm_drm-$(CONFIG_MSM_SDE_ROTATOR) += ../rotator/sde_rotator_dev.o \
-				     ../rotator/sde_rotator_dev.o \
 				     ../rotator/sde_rotator_core.o \
 				     ../rotator/sde_rotator_base.o \
 				     ../rotator/sde_rotator_formats.o \

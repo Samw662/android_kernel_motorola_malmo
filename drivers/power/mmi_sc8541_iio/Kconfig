@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config MMI_SC8541_IIO
+	tristate "Motorola SC8541 IIO charger driver"
+	help
+	  Motorola SC8541 IIO driver for SC8541 bidirectional
+	  charge pump controller.

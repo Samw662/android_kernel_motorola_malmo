@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config QPNP_ADAPTIVE_CHARGE
+	tristate "Qualcomm PMIC adaptive charging driver"
+	help
+	  Qualcomm PMIC adaptive charging driver for intelligent
+	  charge rate optimization.

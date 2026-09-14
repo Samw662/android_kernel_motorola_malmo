@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config ANC_FPS_MMI
+	tristate "ANC fingerprint sensor driver (MMI)"
+	help
+	  ANC fingerprint sensor driver for Motorola devices
+	  with MMI extensions.

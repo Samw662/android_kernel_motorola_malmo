@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config AWINIC_SAR
+	tristate "Awinic SAR sensor driver"
+	help
+	  Awinic SAR (Specific Absorption Rate) proximity
+	  sensor driver for Motorola devices.

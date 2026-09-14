@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config TOUCHSCREEN_MMI
+	tristate "Motorola touchscreen MMI framework"
+	help
+	  Motorola touchscreen MMI framework providing common
+	  interface for touchscreen drivers.

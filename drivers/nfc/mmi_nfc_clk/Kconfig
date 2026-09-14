@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config MMI_NFC_CLK
+	tristate "Motorola NFC clock driver"
+	help
+	  Motorola NFC clock driver for NFC controller
+	  clock management.

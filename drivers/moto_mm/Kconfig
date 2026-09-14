@@ -1,1 +1,7 @@
-# SPDX-License-Identifier: GPL-2.0
+# SPDX-License-Identifier: GPL-2.0-only
+
+config MOTO_MM
+	tristate "Motorola memory management driver"
+	help
+	  Motorola memory management driver for vendor-specific
+	  memory operations.

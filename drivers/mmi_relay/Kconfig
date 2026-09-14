@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config MMI_RELAY
+	tristate "Motorola MMI relay driver"
+	help
+	  Motorola MMI relay driver for userspace-kernel
+	  communication channel.

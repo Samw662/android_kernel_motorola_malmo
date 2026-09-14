@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config SENSORS_CLASS
+	tristate "Motorola sensors class driver"
+	help
+	  Motorola sensors class driver providing sysfs interface
+	  for sensor management.

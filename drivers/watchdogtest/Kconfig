@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config WATCHDOGTEST
+	tristate "Motorola watchdog test driver"
+	help
+	  Motorola watchdog timer test driver for hardware
+	  watchdog verification.

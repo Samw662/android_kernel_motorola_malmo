@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config WAKEUP_SOURCES
+	tristate "Motorola wakeup sources driver"
+	help
+	  Motorola wakeup sources driver for managing
+	  wakeup irq sources.

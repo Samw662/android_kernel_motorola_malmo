@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config MMI_CHARGER
+	tristate "Motorola MMI charger driver"
+	help
+	  Motorola MMI charger driver for battery charging
+	  management and status reporting.

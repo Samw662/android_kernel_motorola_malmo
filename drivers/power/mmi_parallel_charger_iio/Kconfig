@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config MMI_PARALLEL_CHARGER_IIO
+	tristate "Motorola parallel charger IIO driver"
+	help
+	  Motorola parallel charger IIO driver for multi-path
+	  charging current monitoring.

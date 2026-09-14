@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config UTAG
+	tristate "Motorola utag driver"
+	help
+	  Motorola utag (user tag) driver for persistent
+	  storage of device configuration tags.

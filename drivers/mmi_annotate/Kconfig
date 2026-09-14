@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config MMI_ANNOTATE
+	tristate "Motorola MMI annotate support"
+	help
+	  Motorola MMI annotate driver for debug annotations
+	  in kernel log via sysfs.

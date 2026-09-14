@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config MMI_SMBCHARGER_IIO
+	tristate "Motorola SMB charger IIO driver"
+	help
+	  Motorola SMB charger IIO driver for Qualcomm SMB
+	  charger monitoring via IIO subsystem.

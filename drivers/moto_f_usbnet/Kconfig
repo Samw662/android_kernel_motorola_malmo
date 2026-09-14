@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config MOTO_F_USBNET
+	tristate "Motorola USB networking driver"
+	help
+	  Motorola USB networking function driver for
+	  fastboot and diagnostic interfaces.

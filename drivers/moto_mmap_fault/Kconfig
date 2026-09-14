@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config MOTO_MMAP_FAULT
+	tristate "Motorola mmap fault handler"
+	help
+	  Motorola custom mmap fault handler for vendor-specific
+	  memory mapping operations.
