@@ -1,5 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0-only
 
+VIDEO_ROOT ?= $(srctree)/vendor/qcom/opensource/video-driver
+
 ifneq ($(CONFIG_ARCH_MONACO), y)
 KBUILD_CPPFLAGS += -DCONFIG_MSM_MMRM=1
 endif

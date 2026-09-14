@@ -335,6 +335,7 @@ CONFIG_ARCH_HISI=y
 # CONFIG_ARCH_NXP is not set
 # CONFIG_ARCH_NPCM is not set
 CONFIG_ARCH_QCOM=y
+CONFIG_ARCH_BLAIR=y
 # CONFIG_ARCH_REALTEK is not set
 # CONFIG_ARCH_RENESAS is not set
 # CONFIG_ARCH_ROCKCHIP is not set
@@ -5099,6 +5100,7 @@ CONFIG_TYPEC_UCSI=y
 # CONFIG_TYPEC_STUSB160X is not set
 # CONFIG_TYPEC_QCOM_PMIC is not set
 # CONFIG_TYPEC_WUSB3801 is not set
+CONFIG_USB_PD_POLICY=y
 
 #
 # USB Type-C Multiplexer/DeMultiplexer Switch support
