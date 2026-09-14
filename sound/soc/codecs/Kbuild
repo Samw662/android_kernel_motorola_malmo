@@ -58,14 +58,16 @@ endif
 tas2560-objs = tas2560-core.o tas2560-misc.o tas2560-codec.o tas2560-regmap.o
 obj-m += tas2560.o
 
-tas2560_algo-objs = tas2560-algo.o
-obj-m += tas2560_algo.o
-
-tas2560_calib-objs = tas2560-calib.o
-obj-m += tas2560_calib.o
-
-tas2562-objs = tas2562-codec.o tas2562-regmap.o tas25xx-algo.o tas25xx-calib.o
-obj-m += tas2562.o
-
-snd_smartpa_aw882xx-objs = aw882xx.o
-obj-m += snd_smartpa_aw882xx.o
+# These modules need CONFIG_SND_SOC_TAS2560/2562 enabled; without it
+# the source compiles to empty .o files with no MODULE_LICENSE.
+# tas2560_algo-objs = tas2560-algo.o
+# obj-m += tas2560_algo.o
+#
+# tas2560_calib-objs = tas2560-calib.o
+# obj-m += tas2560_calib.o
+#
+# tas2562-objs = tas2562-codec.o tas2562-regmap.o tas25xx-algo.o tas25xx-calib.o
+# obj-m += tas2562.o
+#
+# snd_smartpa_aw882xx-objs = aw882xx.o
+# obj-m += snd_smartpa_aw882xx.o
