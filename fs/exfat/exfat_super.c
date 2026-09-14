@@ -75,7 +75,6 @@
 #include <linux/sched.h>
 #include <linux/fs_struct.h>
 #include <linux/namei.h>
-#include <linux/genhd.h>
 #include <asm/current.h>
 #include <asm/unaligned.h>
 

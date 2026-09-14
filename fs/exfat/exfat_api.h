@@ -42,7 +42,9 @@
 /*  Constant & Macro Definitions                                        */
 /*----------------------------------------------------------------------*/
 
+#ifndef EXFAT_SUPER_MAGIC
 #define EXFAT_SUPER_MAGIC       (0x2011BAB0L)
+#endif
 #define EXFAT_ROOT_INO          1
 
 /* FAT types */

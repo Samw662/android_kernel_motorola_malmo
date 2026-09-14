@@ -8,6 +8,10 @@
 
 #define FW_ACTION_NOUEVENT 0
 #define FW_ACTION_UEVENT 1
+/* Compat: removed in 6.1, older vendor drivers still reference it */
+#ifndef FW_ACTION_HOTPLUG
+#define FW_ACTION_HOTPLUG FW_ACTION_UEVENT
+#endif
 
 struct firmware {
 	size_t size;

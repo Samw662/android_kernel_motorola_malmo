@@ -2327,7 +2327,7 @@ static void cs40l2x_firmware_load(const struct firmware *fw, void *context)
 	if (ret)
 		goto err_rls_fw;
 
-	request_firmware_nowait(THIS_MODULE, FW_ACTION_HOTPLUG, CS40L2X_WT_NAME,
+	request_firmware_nowait(THIS_MODULE, FW_ACTION_UEVENT, CS40L2X_WT_NAME,
 			dev, GFP_KERNEL, cs40l2x, cs40l2x_waveform_load);
 err_rls_fw:
 	release_firmware(fw);
@@ -2467,12 +2467,12 @@ static int cs40l2x_dsp_load(struct cs40l2x_private *cs40l2x)
 			return ret;
 		}
 
-		request_firmware_nowait(THIS_MODULE, FW_ACTION_HOTPLUG,
+		request_firmware_nowait(THIS_MODULE, FW_ACTION_UEVENT,
 				CS40L2X_FW_NAME_A0, dev, GFP_KERNEL, cs40l2x,
 				cs40l2x_firmware_load);
 		return 0;
 	case CS40L2X_REVID_B1:
-		request_firmware_nowait(THIS_MODULE, FW_ACTION_HOTPLUG,
+		request_firmware_nowait(THIS_MODULE, FW_ACTION_UEVENT,
 				CS40L2X_FW_NAME_B1, dev, GFP_KERNEL, cs40l2x,
 				cs40l2x_firmware_load);
 		return 0;
@@ -3086,7 +3086,7 @@ err:
 	return ret;
 }
 
-static int cs40l2x_i2c_remove(struct i2c_client *i2c_client)
+static void cs40l2x_i2c_remove(struct i2c_client *i2c_client)
 {
 	struct cs40l2x_private *cs40l2x = i2c_get_clientdata(i2c_client);
 
@@ -3122,7 +3122,7 @@ static int cs40l2x_i2c_remove(struct i2c_client *i2c_client)
 
 	mutex_destroy(&cs40l2x->lock);
 
-	return 0;
+	return;
 }
 
 static int __maybe_unused cs40l2x_suspend(struct device *dev)
