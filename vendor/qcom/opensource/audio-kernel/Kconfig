@@ -112,7 +112,7 @@ config SND_SOC_HOLI
 	tristate "Qualcomm Holi audio machine driver"
 
 config SND_EVENT
-	tristate "Qualcomm sound event"
+	bool "Qualcomm sound event"
 
 config TDM_DISABLE
 	tristate "Qualcomm TDM disable"

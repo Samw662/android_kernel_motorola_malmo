@@ -9,8 +9,6 @@ endif
 ifeq ($(KERNEL_BUILD), 1)
 	# These are configurable via Kconfig for kernel-based builds
 	# Need to explicitly configure for Android-based builds
-	AUDIO_BLD_DIR := $(shell pwd)/kernel/msm-5.4
-	AUDIO_ROOT := $(AUDIO_BLD_DIR)/techpack/audio
 endif
 
 ifeq ($(KERNEL_BUILD), 0)
@@ -86,7 +84,8 @@ endif
 LINUX_INC +=	-Iinclude/linux
 
 INCS +=		$(COMMON_INC) \
-		$(UAPI_INC)
+		$(UAPI_INC) \
+			-I$(AUDIO_ROOT)/include
 
 EXTRA_CFLAGS += $(INCS)
 
