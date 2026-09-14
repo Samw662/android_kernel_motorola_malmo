@@ -2,6 +2,8 @@
 
 NFC_ROOT ?= $(srctree)/vendor/nxp/opensource/driver
 
+ccflags-y += -Wno-error=format
+
 include $(NFC_ROOT)/config/gki_nfc.conf
 
 LINUXINCLUDE    += -I$(NFC_ROOT)/include/uapi/linux/nfc
