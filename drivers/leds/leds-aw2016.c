@@ -302,9 +302,9 @@ static ssize_t led_time_store(struct device *dev,
 	struct led_classdev *led_cdev = dev_get_drvdata(dev);
 	struct aw2016_led *led =
 		container_of(led_cdev, struct aw2016_led, cdev);
-	int rc, rise_time_ms, hold_time_ms, fall_time_ms, off_time_ms;
+	int rise_time_ms, hold_time_ms, fall_time_ms, off_time_ms;
 
-	rc = sscanf(buf, "%d %d %d %d", &rise_time_ms, &hold_time_ms,
+	sscanf(buf, "%d %d %d %d", &rise_time_ms, &hold_time_ms,
 		    &fall_time_ms, &off_time_ms);
 
 	mutex_lock(&led->pdata->led->lock);
