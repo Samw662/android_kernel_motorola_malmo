@@ -2214,7 +2214,7 @@ static int __cam_req_mgr_process_sof_freeze(void *priv, void *data)
 	spin_unlock_bh(&link->link_state_spin_lock);
 
 	CAM_ERR(CAM_CRM,
-		"SOF freeze for session: %d link: 0x%x max_pd: %d last_req_id:%d",
+		"SOF freeze for session: %d link: 0x%x max_pd: %d last_req_id:%lld",
 		session->session_hdl, link->link_hdl, link->max_delay,
 		last_applied_req_id);
 

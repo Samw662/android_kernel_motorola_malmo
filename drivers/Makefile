@@ -195,9 +195,12 @@ obj-y				+= mmi_annotate/
 obj-y				+= mmi_info/
 obj-y				+= mmi_relay/
 obj-y				+= moto_f_usbnet/
-obj-y				+= moto_mm/
-obj-y				+= moto_swap/
-obj-y				+= moto_sched/
+# moto_mm: vendor hook android_vh_tune_inactive_ratio removed in 6.1
+# obj-y				+= moto_mm/
+# moto_swap: hybridswap struct/API incompatible with 6.1
+# obj-y				+= moto_swap/
+# moto_sched: requires private kernel/sched/sched.h
+# obj-y				+= moto_sched/
 obj-y				+= moto_mmap_fault/
 obj-y				+= moto_con_dfpar/
 obj-y				+= watchdogtest/
