@@ -1,0 +1,129 @@
+menu "Qualcomm Audio (vendor)"
+
+config PINCTRL_LPI
+	tristate "Qualcomm audio LPI pinctrl"
+
+config AUDIO_EXT_CLK
+	tristate "Qualcomm audio external clock"
+
+config SND_SOC_WCD9XXX_V2
+	tristate "Qualcomm WCD9XXX codec core v2"
+
+config SND_SOC_WCD_MBHC
+	tristate "Qualcomm WCD MBHC headphone detection"
+
+config WCD9XXX_CODEC_CORE_V2
+	tristate "Qualcomm WCD9XXX codec core v2 driver"
+
+config MSM_CDC_PINCTRL
+	tristate "Qualcomm CDC pinctrl"
+
+config AUDIO_PKT_ION
+	tristate "Qualcomm audio ION packet driver"
+
+config MSM_QDSP6V2_CODECS
+	tristate "Qualcomm QDSP6 v2 codecs"
+
+config MSM_QDSP6_APRV2_RPMSG
+	tristate "Qualcomm QDSP6 APR v2 RPMSG"
+
+config MSM_ADSP_LOADER
+	tristate "Qualcomm ADSP loader"
+
+config REGMAP_SWR
+	tristate "Qualcomm SoundWire regmap"
+
+config SPF_CORE
+	tristate "Qualcomm SPF core"
+
+config MSM_QDSP6_SSR
+	tristate "Qualcomm QDSP6 subsystem restart"
+
+config MSM_QDSP6_GPR_RPMSG
+	tristate "Qualcomm QDSP6 GPR RPMSG"
+
+config MSM_QDSP6_PDR
+	tristate "Qualcomm QDSP6 PDR"
+
+config AUDIO_PRM
+	tristate "Qualcomm audio PRM"
+
+config AUDIO_PKT
+	tristate "Qualcomm audio packet driver"
+
+config MSM_QDSP6_NOTIFIER
+	tristate "Qualcomm QDSP6 notifier"
+
+config SND_SOC_MSM_QDSP6V2_INTF
+	tristate "Qualcomm MSM QDSP6 v2 interface"
+
+config SOUNDWIRE_MSTR_CTRL
+	tristate "Qualcomm SoundWire master controller"
+
+config SND_SOC_QDSP6V2
+	tristate "Qualcomm MSM QDSP6v2 machine driver"
+
+config SND_SOC_WCD_MBHC_ADC
+	tristate "Qualcomm WCD MBHC ADC"
+
+config QTI_PP
+	tristate "Qualcomm post-processing"
+
+config SND_HWDEP_ROUTING
+	tristate "Qualcomm HW dependency routing"
+
+config SND_SOC_MSM_STUB
+	tristate "Qualcomm MSM stub codec"
+
+config SND_SOC_BOLERO
+	tristate "Qualcomm AudioReach Bolero codec driver"
+
+config VA_MACRO
+	tristate "Qualcomm VA macro"
+
+config RX_MACRO
+	tristate "Qualcomm RX macro"
+
+config TX_MACRO
+	tristate "Qualcomm TX macro"
+
+config SND_SOC_WCD_IRQ
+	tristate "Qualcomm WCD IRQ"
+
+config SND_SOC_WCD938X
+	tristate "Qualcomm WCD938X codec"
+
+config SND_SOC_WCD938X_SLAVE
+	tristate "Qualcomm WCD938X slave codec"
+
+config SND_SOC_WCD937X
+	tristate "Qualcomm WCD937X codec"
+
+config SND_SOC_WCD937X_SLAVE
+	tristate "Qualcomm WCD937X slave codec"
+
+config SND_SOC_WSA881X_ANALOG
+	tristate "Qualcomm WSA881X analog codec"
+
+config WSA881X_TEMP_SENSOR_DISABLE
+	tristate "WSA881X temperature sensor disable"
+
+config SND_SOC_HOLI
+	tristate "Qualcomm Holi audio machine driver"
+
+config SND_EVENT
+	tristate "Qualcomm sound event"
+
+config TDM_DISABLE
+	tristate "Qualcomm TDM disable"
+
+config MI2S_DISABLE
+	tristate "Qualcomm MI2S disable"
+
+config AUXPCM_DISABLE
+	tristate "Qualcomm AUXPCM disable"
+
+config DIGITAL_CDC_RSC_MGR
+	tristate "Qualcomm digital CDC resource manager"
+
+endmenu
