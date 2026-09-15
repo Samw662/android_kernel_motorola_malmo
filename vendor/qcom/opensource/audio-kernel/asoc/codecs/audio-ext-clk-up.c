@@ -15,7 +15,7 @@
 #include <linux/platform_device.h>
 #include <bindings/qcom,audio-ext-clk.h>
 #include <linux/ratelimit.h>
-#ifdef CONFIG_AUDIO_PRM
+#if IS_ENABLED(CONFIG_AUDIO_PRM)
 #include <dsp/audio_prm.h>
 #else
 #include "audio-ext-clk-up.h"
@@ -62,7 +62,7 @@ struct audio_ext_clk_priv {
 	struct device *dev;
 	int clk_src;
 	uint32_t enable;
-#ifdef CONFIG_AUDIO_PRM
+#if IS_ENABLED(CONFIG_AUDIO_PRM)
 	struct clk_cfg prm_clk_cfg;
 #endif
 	struct audio_ext_clk audio_clk;
@@ -85,7 +85,7 @@ static int audio_ext_clk_prepare(struct clk_hw *hw)
 
 	if ((clk_priv->clk_src >= AUDIO_EXT_CLK_LPASS) &&
 		(clk_priv->clk_src < AUDIO_EXT_CLK_LPASS_MAX) && !clk_priv->enable)  {
-#ifdef CONFIG_AUDIO_PRM
+#if IS_ENABLED(CONFIG_AUDIO_PRM)
 	    pr_debug("%s: clk_id %x ", __func__, clk_priv->prm_clk_cfg.clk_id);
 		ret = audio_prm_set_lpass_clk_cfg(&clk_priv->prm_clk_cfg,1);
 #else
@@ -136,7 +136,7 @@ static void audio_ext_clk_unprepare(struct clk_hw *hw)
 	if ((clk_priv->clk_src >= AUDIO_EXT_CLK_LPASS) &&
 		(clk_priv->clk_src < AUDIO_EXT_CLK_LPASS_MAX))  {
 		clk_priv->enable = 0;
-#ifdef CONFIG_AUDIO_PRM
+#if IS_ENABLED(CONFIG_AUDIO_PRM)
 		pr_debug("%s: clk_id %x", __func__,
 				clk_priv->prm_clk_cfg.clk_id);
 		ret = audio_prm_set_lpass_clk_cfg(&clk_priv->prm_clk_cfg, 0);
@@ -180,7 +180,7 @@ static int lpass_hw_vote_prepare(struct clk_hw *hw)
 	static DEFINE_RATELIMIT_STATE(rtl, 1 * HZ, 1);
 
 	if (clk_priv->clk_src == AUDIO_EXT_CLK_LPASS_CORE_HW_VOTE)  {
-#ifdef CONFIG_AUDIO_PRM
+#if IS_ENABLED(CONFIG_AUDIO_PRM)
 		pr_debug("%s: core vote clk_id %x \n", __func__, clk_priv->prm_clk_cfg.clk_id);
 		ret = audio_prm_set_lpass_hw_core_req(&clk_priv->prm_clk_cfg,
 			HW_CORE_ID_LPASS, 1);
@@ -197,7 +197,7 @@ static int lpass_hw_vote_prepare(struct clk_hw *hw)
 	}
 
 	if (clk_priv->clk_src == AUDIO_EXT_CLK_LPASS_AUDIO_HW_VOTE)  {
-#ifdef CONFIG_AUDIO_PRM
+#if IS_ENABLED(CONFIG_AUDIO_PRM)
 		pr_debug("%s: audio vote clk_id %x \n", __func__, clk_priv->prm_clk_cfg.clk_id);
 		ret = audio_prm_set_lpass_hw_core_req(&clk_priv->prm_clk_cfg,
 			HW_CORE_ID_DCODEC, 1);
@@ -222,7 +222,7 @@ static void lpass_hw_vote_unprepare(struct clk_hw *hw)
 	int ret = 0;
 
 	if (clk_priv->clk_src == AUDIO_EXT_CLK_LPASS_CORE_HW_VOTE) {
-#ifdef CONFIG_AUDIO_PRM
+#if IS_ENABLED(CONFIG_AUDIO_PRM)
 		pr_debug("%s: core vote clk_id %x \n", __func__, clk_priv->prm_clk_cfg.clk_id);
 		ret = audio_prm_set_lpass_hw_core_req(&clk_priv->prm_clk_cfg,
 				HW_CORE_ID_LPASS, 0);
@@ -238,7 +238,7 @@ static void lpass_hw_vote_unprepare(struct clk_hw *hw)
 
 	if (clk_priv->clk_src == AUDIO_EXT_CLK_LPASS_AUDIO_HW_VOTE) {
 
-#ifdef CONFIG_AUDIO_PRM
+#if IS_ENABLED(CONFIG_AUDIO_PRM)
 		pr_debug("%s: audio vote clk_id %x \n", __func__, clk_priv->prm_clk_cfg.clk_id);
 		ret = audio_prm_set_lpass_hw_core_req(&clk_priv->prm_clk_cfg,
 				HW_CORE_ID_DCODEC, 0);
@@ -667,7 +667,7 @@ static int audio_ref_clk_probe(struct platform_device *pdev)
 	memcpy(&clk_priv->audio_clk, &audio_clk_array[clk_src],
 		   sizeof(struct audio_ext_clk));
 
-#ifdef CONFIG_AUDIO_PRM
+#if IS_ENABLED(CONFIG_AUDIO_PRM)
 	/* Init prm clk cfg default values */
 	clk_priv->prm_clk_cfg.clk_id = CLOCK_ID_QUI_MI2S_OSR;
 	clk_priv->prm_clk_cfg.clk_freq_in_hz = OSR_CLOCK_9_P600_MHZ;
@@ -679,7 +679,7 @@ static int audio_ref_clk_probe(struct platform_device *pdev)
 			"qcom,codec-lpass-ext-clk-freq",
 			&clk_freq);
 	if (!ret) {
-#ifdef CONFIG_AUDIO_PRM
+#if IS_ENABLED(CONFIG_AUDIO_PRM)
 		clk_priv->prm_clk_cfg.clk_freq_in_hz = clk_freq;
 #endif
 	}
@@ -688,7 +688,7 @@ static int audio_ref_clk_probe(struct platform_device *pdev)
 			"qcom,codec-lpass-clk-id",
 			&clk_id);
 	if (!ret) {
-#ifdef CONFIG_AUDIO_PRM
+#if IS_ENABLED(CONFIG_AUDIO_PRM)
 		clk_priv->prm_clk_cfg.clk_id = clk_id;
 		dev_dbg(&pdev->dev, "%s: PRM ext-clk freq: %d, lpass clk_id: %d, clk_src: %d\n",
 			__func__, clk_priv->prm_clk_cfg.clk_freq_in_hz,

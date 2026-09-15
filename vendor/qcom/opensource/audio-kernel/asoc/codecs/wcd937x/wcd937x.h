@@ -48,7 +48,7 @@ static int wcd937x_swr_master_ch_map[] = {
 	SWRM_TX_PCM_IN,
 };
 
-#ifdef CONFIG_SND_SOC_WCD937X
+#if IS_ENABLED(CONFIG_SND_SOC_WCD937X)
 extern int wcd937x_info_create_codec_entry(struct snd_info_entry *codec_root,
 				    struct snd_soc_component *component);
 

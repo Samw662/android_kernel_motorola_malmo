@@ -98,7 +98,7 @@ struct wcd_clsh_cdc_info {
 	int interpolator_modes[WCD_CLSH_STATE_MAX];
 };
 
-#ifdef CONFIG_SND_SOC_WCD9XXX_V2
+#if IS_ENABLED(CONFIG_SND_SOC_WCD9XXX_V2)
 extern void wcd_cls_h_fsm(struct snd_soc_component *component,
 		struct wcd_clsh_cdc_info *cdc_clsh_d,
 		u8 clsh_event, u8 req_state,

@@ -18,7 +18,7 @@ struct snd_event_ops {
 	void (*disable)(struct device *dev, void *data);
 };
 
-#ifdef CONFIG_SND_EVENT
+#if IS_ENABLED(CONFIG_SND_EVENT)
 int snd_event_client_register(struct device *dev,
 			      const struct snd_event_ops *snd_ev_ops,
 			      void *data);

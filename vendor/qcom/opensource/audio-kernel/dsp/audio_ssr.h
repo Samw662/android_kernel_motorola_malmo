@@ -12,7 +12,7 @@ enum {
 	AUDIO_SSR_DOMAIN_MAX
 };
 
-#ifdef CONFIG_MSM_QDSP6_SSR
+#if IS_ENABLED(CONFIG_MSM_QDSP6_SSR)
 
 /*
  * Use audio_ssr_register to register with the SSR subsystem
@@ -50,7 +50,7 @@ void audio_ssr_send_nmi(void *ssr_cb_data);
 
 #else
 
-static inline void *audio_ssr_register(int domain_id,
+static inline void *audio_ssr_register(const char *domain_name,
 				       struct notifier_block *nb)
 {
 	return NULL;

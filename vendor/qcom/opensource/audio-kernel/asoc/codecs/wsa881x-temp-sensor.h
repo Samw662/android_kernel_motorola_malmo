@@ -29,7 +29,7 @@ struct wsa881x_tz_priv {
 	int curr_temp;
 };
 
-#ifndef CONFIG_WSA881X_TEMP_SENSOR_DISABLE
+#if !IS_ENABLED(CONFIG_WSA881X_TEMP_SENSOR_DISABLE)
 int wsa881x_init_thermal(struct wsa881x_tz_priv *tz_pdata);
 void wsa881x_deinit_thermal(struct thermal_zone_device *tz_dev);
 int wsa881x_get_temp(struct thermal_zone_device *tz_dev, int *temp);

@@ -13,7 +13,7 @@ enum {
 	AUDIO_PDR_DOMAIN_MAX
 };
 
-#ifdef CONFIG_MSM_QDSP6_PDR
+#if IS_ENABLED(CONFIG_MSM_QDSP6_PDR)
 
 /*
  * Use audio_pdr_service_register to register with a PDR service

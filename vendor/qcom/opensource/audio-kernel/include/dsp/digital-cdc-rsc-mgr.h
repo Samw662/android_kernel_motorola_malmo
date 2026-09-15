@@ -9,7 +9,7 @@
 
 #include <linux/clk.h>
 
-#ifdef CONFIG_DIGITAL_CDC_RSC_MGR
+#if IS_ENABLED(CONFIG_DIGITAL_CDC_RSC_MGR)
 
 int digital_cdc_rsc_mgr_hw_vote_enable(struct clk *vote_handle, struct device *dev);
 void digital_cdc_rsc_mgr_hw_vote_disable(struct clk *vote_handle, struct device *dev);

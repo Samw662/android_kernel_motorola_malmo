@@ -5,7 +5,7 @@
 #ifndef _ROULEUR_H
 #define _ROULEUR_H
 
-#ifdef CONFIG_SND_SOC_ROULEUR
+#if IS_ENABLED(CONFIG_SND_SOC_ROULEUR)
 extern int rouleur_info_create_codec_entry(struct snd_info_entry *codec_root,
 				    struct snd_soc_component *component);
 #else
