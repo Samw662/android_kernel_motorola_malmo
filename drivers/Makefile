@@ -217,9 +217,9 @@ obj-y				+= power/mmi_sc8541_iio/
 obj-y				+= power/mmi-smbcharger-iio/
 obj-y				+= power/mmi_parallel_charger_iio/
 obj-y				+= power/qpnp_adaptive_charge/
-# touchscreen drivers: panel notifier APIs removed in 6.1, not in vendor_dlkm
-# obj-y				+= input/touchscreen/touchscreen_mmi/
-# obj-y				+= input/touchscreen/goodix_berlin_mmi/
+# touchscreen drivers (built as vendor DLKM modules)
+obj-$(CONFIG_TOUCHSCREEN_MMI)		+= input/touchscreen/touchscreen_mmi/
+obj-$(CONFIG_TOUCHSCREEN_GOODIX_BERLIN_MMI)	+= input/touchscreen/goodix_berlin_mmi/
 # obj-y				+= input/touchscreen/focaltech_touch_v3_4/
 obj-y				+= input/misc/goodix_fod_mmi/
 obj-y				+= input/misc/anc_fps_mmi/

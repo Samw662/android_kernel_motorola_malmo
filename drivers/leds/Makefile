@@ -116,7 +116,7 @@ obj-y					+= blink/
 # Simple LED drivers
 obj-y					+= simple/
 
-# Motorola indicator PWM driver
-EXTRA_CFLAGS += -Wall
-EXTRA_CFLAGS += -I$(srctree)/include
-obj-m += leds-indicator-pwm.o
+# Motorola indicator PWM driver - Disabled: not in reference firmware for malmo
+# EXTRA_CFLAGS += -Wall
+# EXTRA_CFLAGS += -I$(srctree)/include
+# obj-m += leds-indicator-pwm.o

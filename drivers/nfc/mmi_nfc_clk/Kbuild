@@ -1,4 +1,5 @@
 # add -Wall to try to catch everything we can.
 EXTRA_CFLAGS += -Wall
 
-obj-m += mmi_nfc_clk.o
+# Disabled: not in reference firmware for malmo
+# obj-m += mmi_nfc_clk.o

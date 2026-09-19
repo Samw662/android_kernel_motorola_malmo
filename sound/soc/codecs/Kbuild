@@ -55,8 +55,9 @@ endif
 obj-m += snd_soc_tfa9874.o
 endif
 
-tas2560-objs = tas2560-core.o tas2560-misc.o tas2560-codec.o tas2560-regmap.o
-obj-m += tas2560.o
+# Disabled: not in reference firmware for malmo
+# tas2560-objs = tas2560-core.o tas2560-misc.o tas2560-codec.o tas2560-regmap.o
+# obj-m += tas2560.o
 
 # These modules need CONFIG_SND_SOC_TAS2560/2562 enabled; without it
 # the source compiles to empty .o files with no MODULE_LICENSE.
