@@ -16,9 +16,7 @@ goodix_brl_mmi-objs := \
 					goodix_ts_tools.o \
 					goodix_ts_config.o
 
-ifneq ($(filter m y, $(CONFIG_DRM_PANEL_EVENT_NOTIFICATIONS)),)
-	EXTRA_CFLAGS += -DCONFIG_DRM_PANEL_EVENT_NOTIFICATIONS
-endif
+EXTRA_CFLAGS += -DCONFIG_DRM_PANEL_EVENT_NOTIFICATIONS
 
 ifneq ($(filter m y,$(CONFIG_DRM_PANEL_NOTIFICATIONS)),)
     EXTRA_CFLAGS += -DCONFIG_DRM_PANEL_NOTIFICATIONS
